@@ -1,0 +1,33 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'bioblog/style.css' %}">
+
+
+<div class="header">
+  <h2>Blogobiota</h2>
+  <p>Microbiota explicada</p>
+</div>
+
+
+
+<div class="row">
+  <div class="leftcolumn">
+    {% for post in latest_post_list %}
+      <div class="card">
+        <a href="/bioblog/author/{{post.author}}">{{post.author}}</a>; <a href="/bioblog/organism/{{post.organism}}">{{post.organism}}</a>; <a href="/bioblog/pub_date/{{post.pub_date|date:"Y-m-d"}}">{{post.pub_date|date:"d-m-Y"}}</a>; Modificado em <a href="/bioblog/modified_at/{{post.modified_at|date:"Y-m-d"}}">{{post.modified_at|date:"d/m/Y"}}</a> 
+        <p>{{post.post_text}}</p>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="rightcolumn">
+    <div class="card">
+      <h2>Sobre nós</h2>
+      
+      <p>{{about_field}}</p>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>{{contact_field}}</p>
+</div>
